@@ -40,15 +40,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_COPY_FILES += \
    device/sony/montblanc-common/prebuilt/logo-480x854.rle:root/logo.rle
 
-#XPEIENCE prebuilts
-PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/prebuilt/axperiau_ondemandax.ko:/system/lib/modules/axperiau_ondemandax.ko \
-$(LOCAL_PATH)/prebuilt/axperiau_pegasusq.ko:/system/lib/modules/axperiau_pegasusq.ko \
-$(LOCAL_PATH)/prebuilt/axperiau_sio_iosched.ko:/system/lib/modules/axperiau_sio_iosched.ko \
-$(LOCAL_PATH)/prebuilt/axperiau_smartass2.ko:/system/lib/modules/axperiau_smartass2.ko \
-$(LOCAL_PATH)/prebuilt/rng-core.ko:/system/lib/modules/rng-core.ko
-
-
 # Configuration scripts
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/config/dash.conf:system/etc/dash.conf \
@@ -67,6 +58,14 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/recovery/bootrec-device:root/sbin/bootrec-device \
    $(LOCAL_PATH)/recovery/bootrec-device-fs:root/sbin/bootrec-device-fs \
    $(LOCAL_PATH)/recovery.fstab:root/recovery.fstab
+
+#XPEIENCE prebuilts
+PRODUCT_COPY_FILES += \
+$(LOCAL_PATH)/prebuilt/axperiau_ondemandax.ko:/system/lib/modules/axperiau_ondemandax.ko \
+$(LOCAL_PATH)/prebuilt/axperiau_pegasusq.ko:/system/lib/modules/axperiau_pegasusq.ko \
+$(LOCAL_PATH)/prebuilt/axperiau_sio_iosched.ko:/system/lib/modules/axperiau_sio_iosched.ko \
+$(LOCAL_PATH)/prebuilt/axperiau_smartass2.ko:/system/lib/modules/axperiau_smartass2.ko \
+$(LOCAL_PATH)/prebuilt/rng-core.ko:/system/lib/modules/rng-core.ko
 
 # Key layouts and touchscreen
 PRODUCT_COPY_FILES += \
