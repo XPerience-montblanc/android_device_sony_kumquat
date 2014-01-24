@@ -36,6 +36,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+  LOCAL_KERNEL := device/sony/kumquat/kernel
+else
+  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel 
+
 # Configuration scripts
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/config/init.st-ericsson.device.rc:root/init.st-ericsson.device.rc \
@@ -65,7 +74,7 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/lock/pre_hw_config.sh:system/etc/pre_hw_config.sh \
    $(LOCAL_PATH)/lock/charger:system/bin/charger \
    $(LOCAL_PATH)/lock/chargemon:system/bin/chargemon \
-   $(LOCAL_PATH)/lock/recovery:system/bin/recovery
+   $(LOCAL_PATH)/lock/recovery.tar:system/bin/recovery.tar
 
 #XPEIENCE prebuilts
 PRODUCT_COPY_FILES += \
