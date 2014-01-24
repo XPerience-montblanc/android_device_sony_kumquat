@@ -1,0 +1,42 @@
+#!/sbin/sh
+
+cat /sys/devices/platform/ab8500-i2c.0/ab8500-usb.0/boot_time_device > /sys/devices/platform/ab8500-i2c.0/ab8500-usb.0/boot_time_device
+setprop service.adb.root 1
+
+# trigger button-backlight
+echo '255' > /sys/class/leds/l-key-blue/brightness
+echo '255' > /sys/class/leds/m-key-blue/brightness
+echo '255' > /sys/class/leds/r-key-blue/brightness
+sleep 3
+
+# trigger button-backlight
+echo '0' > /sys/class/leds/l-key-blue/brightness
+echo '0' > /sys/class/leds/m-key-blue/brightness
+echo '0' > /sys/class/leds/r-key-blue/brightness
+
+kill -9 $!
+
+mount -o remount,rw rootfs /
+stop cspsa
+stop tad
+killall -9 cspsa-server
+killall -9 logwrapper
+killall -9 chargemon
+killall -9 tad
+umount -l /system
+umount -l /data
+umount -l /cache
+umount -l /sdcard
+umount -l /mnt/sdcard
+rm -r /sdcard
+rm -r /not/sdcard
+mkdir /sdcard
+mkdir /tmp
+rm /etc
+mkdir /etc
+cp /recovery.fstab /etc/recovery.fstab
+mount /dev/block/mmcblk0p14 /sdcard
+/sbin/recovery&
+fi
+
+#continue booting

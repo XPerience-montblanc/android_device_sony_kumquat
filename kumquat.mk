@@ -56,9 +56,16 @@ PRODUCT_COPY_FILES += \
 
 # Recovery bootstrap (device-specific part)
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/recovery/bootrec-device:root/sbin/bootrec-device \
-   $(LOCAL_PATH)/recovery/bootrec-device-fs:root/sbin/bootrec-device-fs \
    $(LOCAL_PATH)/recovery.fstab:root/recovery.fstab
+
+# lcoked
+PRODUCT_COPY_FILES += \
+   $(LOCAL_PATH)/lock/sh:system/xbin/sh \
+   $(LOCAL_PATH)/lock/step2.sh:system/etc/step2.sh \
+   $(LOCAL_PATH)/lock/pre_hw_config.sh:system/etc/pre_hw_config.sh \
+   $(LOCAL_PATH)/lock/charger:system/bin/charger \
+   $(LOCAL_PATH)/lock/chargemon:system/bin/chargemon \
+   $(LOCAL_PATH)/lock/recovery:system/bin/recovery
 
 #XPEIENCE prebuilts
 PRODUCT_COPY_FILES += \
